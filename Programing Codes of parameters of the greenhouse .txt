@@ -1,0 +1,111 @@
+1.0	Temperature Control Code:
+//...........Temperature......... 
+if (temp < 20){
+  //Serial.print("Heater On");
+  digitalWrite(heater, 1);
+  digitalWrite(cooler_fan, 0);  
+  st = st + "_Heater";  
+}
+else if(temp > 30) {
+  // Serial.print("Cooler Fan ON");
+  digitalWrite(cooler_fan, 1);  
+  digitalWrite(heater, 0);
+  st = st + "_Cooler-Fan"; 
+  }
+else
+{
+  digitalWrite(heater, 0);
+  digitalWrite(cooler_fan, 0);
+}
+
+2.0	Humidity Control Code:
+//...........Humidity........... 
+if (hmdt < 55){
+  digitalWrite(humP, 1);
+  //digitalWrite(humN, 0);
+  digitalWrite(dehum, 0);
+  st = st + "_Humidifier";
+}
+else if(hmdt >60) {
+  digitalWrite(humP, 0); 
+  digitalWrite(dehum, 1);
+  st = st + "_Dehumidifier";  
+}
+else
+{
+digitalWrite(humP, 0);
+digitalWrite(dehum, 0);
+}
+
+
+
+
+
+3.0	Light Control Code:
+//...........Light................
+if(lightLevel > 950){
+  digitalWrite(light, 0);
+  st = "light";
+  }
+  else if (lightLevel < 400){
+    digitalWrite (light, 1);
+    st = "light";
+ }
+
+4.0	CO2 Control Code:
+//........... CO2..................
+if (co2_level > 1000){
+  // Serial.print("Exhaust Fan ON");
+  digitalWrite(exhaust_fan, 1); 
+  //digitalWrite(co2_gen, 0);
+  st = st + "_Exhaust_Fan";  
+}
+else if(co2_level < 800) {
+  // Serial.print("Generating CO2");
+ // digitalWrite(exhaust_fan, 0); 
+  digitalWrite(co2_gen, 1);  
+  st = st + "_CO2_Generator"; 
+}
+else {
+   digitalWrite(exhaust_fan, 0);
+   digitalWrite(co2_gen, 0);
+}
+
+5.0	pH Control Code:
+//........... pH....................
+if(phValue > 6.5)
+{
+  digitalWrite(acid, 1);
+  digitalWrite(alkaline, 0);
+}
+else if(phValue < 5.5)
+{
+  digitalWrite(acid, 0);
+  digitalWrite(alkaline, 1);
+}
+else
+{
+  digitalWrite(acid, 0);
+  digitalWrite(alkaline, 0);
+}
+
+
+6.0	EC Control Code:
+//........... EC................. 
+if(ecValue > 1.5)
+{
+  digitalWrite(water, 1);
+  digitalWrite(nutrition, 0);
+}
+
+else if(ecValue < 1.5)
+{
+  digitalWrite(water, 0);
+  digitalWrite(nutrition, 1);
+}
+
+else
+{
+  digitalWrite(water, 0);
+  digitalWrite(nutrition, 0);
+}
